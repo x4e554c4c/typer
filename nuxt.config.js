@@ -1,3 +1,5 @@
+import { resolve } from 'path'
+
 export default {  
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -14,6 +16,13 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,300;1,400;1,600&display=swap'}
     ]
+  },
+
+  // Path resolvers  
+  alias: {
+    '~~': resolve(__dirname, '.'),
+    '~': resolve(__dirname, './src'),
+    '~css': resolve(__dirname, './assets/css'),
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

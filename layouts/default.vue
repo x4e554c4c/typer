@@ -1,8 +1,6 @@
 <template>
-  <div class="layout-deafault">
-
+  <div class="layout-default">
     <navbar-desktop/>
-
     <Nuxt />
   </div>
 </template>

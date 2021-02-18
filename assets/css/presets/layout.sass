@@ -1,0 +1,41 @@
+@import '~css/components/layout/navbar'
+@import '~css/components/layout/header'
+
+// Linear resizing
+@function resize($x1, $y1, $x2, $y2)
+	$k:  ($y1 - $y2) / ($x1 - $x2)
+	$b: $x1 * -$k + $y1
+	@return calc(100% * #{$k} + #{$b})
+
+// Default layout styles
+@mixin layout()
+	display: grid
+	margin: 0 auto
+	padding: 100px 0
+	min-height: 100vh
+	max-width: $desktop-breakpoint
+	
+
+
+.layout-default
+	@include layout()
+
+	$nav-desktop: 400px 
+	$nav-laptop:  200px
+
+	@include desktop()
+		$left: resize($desktop-breakpoint, $nav-desktop, $laptop-breakpoint, $nav-laptop)
+		$right: resize($desktop-breakpoint, $nav-desktop, $laptop-breakpoint, 0) 
+		grid-template-columns: $left 1fr $right
+
+	@include laptop()
+		grid-template-columns: $nav-laptop 1fr
+
+	@include mobile()
+		grid-template-column: repeat(3, 0)
+
+.container
+	transition: padding .4s
+
+	@include laptop()
+		padding: 0 20px

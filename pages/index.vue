@@ -1,5 +1,7 @@
 <template>
   <div class="container">
+    <page-info/>
+    <typer/>
   </div>
 </template>
 
