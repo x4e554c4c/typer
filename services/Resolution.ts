@@ -1,15 +1,10 @@
 import {throttle} from 'throttle-debounce'
 
-
-export interface Event {
-    [key: string]: boolean
-}
-
 export interface Listener {
-    (event: string) : number
+    (event: string) : void
 }
 
-interface Breakpoints {
+export interface Breakpoints {
     [key: string] : number
 }
 
@@ -21,13 +16,11 @@ export class Observer
     
     private readonly delay: number = 300;
 
-    public readonly breakpoints: Breakpoints  = {
-        'mobile': 1200,
-        'laptop': 1920,
-        'desktop': Infinity
-    }
+    public readonly breakpoints: Breakpoints = {};
+ 
+    constructor(breakpoints: Breakpoints) {
+        this.breakpoints = breakpoints;
 
-    constructor() {
         this.decide();
 
         let throtteled: () => void = 
@@ -74,7 +67,7 @@ export class Observer
     public detach(callback: Listener) {
         let index: number = 
             this._listeners.indexOf(callback);
-            
+
         if (index === -1)
             return false;
 
