@@ -6,10 +6,14 @@
 	grid-template-rows: 225px 1fr
 	grid-template-column: 225px
 
+	@include mobile()
+		display: none
+
 .navbar-desktop__head
 	display: flex
 	align-items: center
 	justify-content: center
+
 	
 .navbar-desktop__profile
 	width: 50%

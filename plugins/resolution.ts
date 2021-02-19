@@ -1,11 +1,6 @@
 import { Observer, Breakpoints } from '@/services/Resolution'
-import { Plugin } from '@nuxt/types'
 import { reactive } from '@nuxtjs/composition-api'
-
-
-interface Resolution { 
-  [key: string] : boolean
-}
+import { Plugin } from '@nuxt/types'
 
 class ResolutionAdapter {
 
@@ -15,7 +10,9 @@ class ResolutionAdapter {
     'desktop': Infinity
   };
 
-  public resolution: Resolution  = {} 
+  private delay: number = 100; 
+
+  public resolution: {[key: string] : boolean}  = {} 
 
   constructor() {
     if (process.client)
@@ -25,7 +22,7 @@ class ResolutionAdapter {
   }
 
   private watch(): void  {
-    let watcher = new Observer(this.breakpoints);
+    let watcher = new Observer(this.breakpoints, this.delay);
 
     watcher.bind(this.update.bind(this));
   }
@@ -35,7 +32,6 @@ class ResolutionAdapter {
   }
 
   private update(current: string): void {
-    console.log('update');
     for (let key in this.breakpoints)
       this.resolution[key] = key === current;
   }
