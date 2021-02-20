@@ -18,11 +18,10 @@ export class Observer
  
     constructor(breakpoints: Breakpoints, delay: number = 200) {
         this.breakpoints = breakpoints;
-
         this.decide();
 
         let throtteled: () => void = 
-            throttle(this.delay, this.decide.bind(this))
+            throttle(delay, this.decide.bind(this))
         
         window.addEventListener('resize', throtteled);
     }

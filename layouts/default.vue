@@ -1,12 +1,5 @@
 <template>
-  <div class="layout-default">
-    <navbar-desktop v-if="!!!false"/>
+  <div class="layout">
     <Nuxt />
   </div>
 </template>
-
-<script>
-
-export default {
-}
-</script>

@@ -1,0 +1,29 @@
+
+@mixin card()
+	border-radius: 40px 40px 0 0
+	
+.typer
+	@include card()
+	
+	padding: 40px 40px 0 40px
+	height: 62vh
+
+	display: grid
+	grid-area: typer
+	grid-template-rows: 100px 1fr
+
+	background: $typer-background-color
+	color: $typer-foreground-color
+
+.typer__metrics
+	display: grid
+	grid-auto-flow: column
+
+	background: $metrics-background-color
+	color: $metrics-foreground-color
+	
+.typer__trainer
+	@include card()
+
+	background: $input-background-color
+	color: $input-foreground-color

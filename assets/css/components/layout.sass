@@ -1,0 +1,18 @@
+
+.layout
+	height: 100vh
+	background: white
+
+	display: grid
+	grid-template-columns: 1fr 100px 1fr
+	grid-template-rows: 1fr max-content
+	grid-template-areas: 'empty empty empty' 'left typer right'
+
+	@include desktop() 
+		grid-template-columns: 1fr 1000px 1fr
+	
+	@include laptop()
+		grid-template-columns: 1fr 700px 1fr
+
+	@include mobile()
+		grid-template-columns: 1fr 90vw 1fr

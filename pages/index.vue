@@ -1,16 +1,15 @@
 <template>
-  <div class="container">
-    <page-info/>
+  <main class="typer">
+    <metrics/>
+
     <typer/>
-  </div>
+  </main>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 
 export default Vue.extend({
-  mounted() {
-    
-  }
+  
 })
 </script>
